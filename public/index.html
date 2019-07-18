@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LunarCRUSH Widget Galaxy Score</title>
+    <!-- <link href="https://fonts.googleapis.com/css?family=Exo+2&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+      body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        background-color: #0f1722;
+      }
+
+      #galaxy-score-widget {
+        border-style: none;
+        width: 270px;
+        height: 240px;
+        font-family: 'Roboto', sans-serif;
+        position: absolute;
+        left: 1395px;
+        top: 550px;
+        z-index: 1;
+        background-color: #0f1722;
+      }
+
+      #social-widget {
+        border-style: none;
+        width: 270px;
+        height: 500px;
+        font-family: 'Roboto', sans-serif;
+        position: absolute;
+        left: 1395px;
+        top: 800px;
+        background-color: #0f1722;
+      }
+
+      #news-widget {
+        border-style: none;
+        width: 1000px;
+        height: 500px;
+        font-family: 'Roboto', sans-serif;
+        position: relative;
+        left: 340px;
+        background-color: #0f1722;
+      }
+
+      .metrics-widget {
+        border-style: none;
+        width: 1000px;
+        height: 250px;
+        font-family: 'Roboto', sans-serif;
+        position: relative;
+        left: 340px;
+        background-color: #0f1722;
+      }
+
+      #metrics-widget-galaxy-score {
+        margin-top: -60px;
+      }
+
+      /* #wrapper {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-attachment: fixed;
+        background-image: url('coin-page.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: top left;
+      } */
+    </style>
+    <script>
+      var paletteLight = {
+        type: 'dark',
+        common: { black: 'rgba(0, 0, 0, 1)', white: 'rgba(255, 255, 255, 1)' },
+        // background: { paper: '#2e3540', default: '#272b34' },
+        background: { paper: '#202327', default: '#191a1e' },
+        primary: {
+          light: 'rgba(126,211,32, 1)',
+          main: 'rgba(126,211,32, 1)',
+          dark: 'rgba(126,211,32, 1)',
+          contrastText: 'rgba(255, 255, 255, 1)'
+        },
+        secondary: {
+          light: 'rgba(255,39,0, 1)',
+          main: 'rgba(255,39,0, 1)',
+          dark: 'rgba(255,39,0, 1)',
+          contrastText: 'rgba(255, 255, 255, 1)'
+        },
+        error: {
+          light: 'rgba(229, 115, 115, 1)',
+          main: 'rgba(244, 67, 54, 1)',
+          dark: 'rgba(211, 47, 47, 1)',
+          contrastText: '#fff'
+        },
+        // contrastThreshold: 100,
+        // tonalOffset: 100,
+        text: {
+          primary: 'rgba(255, 255, 255, 0.87)',
+          secondary: 'rgba(209, 209, 209, 0.54)',
+          disabled: 'rgba(134, 134, 134, 0.38)',
+          hint: 'rgba(0, 0, 0, 0.38)'
+        },
+        typography: {
+          fontFamily: "'Roboto', sans-serif",
+          fontWeight: 300
+        },
+      };
+
+      function setPalette() {
+        return window.btoa(JSON.stringify(paletteLight))
+      }
+
+      function getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split('&');
+        for (var i = 0; i < vars.length; i++) {
+          var pair = vars[i].split('=');
+          if (decodeURIComponent(pair[0]) == variable) {
+            return decodeURIComponent(pair[1]);
+          }
+        }
+        console.log('Query variable %s not found', variable);
+      };
+
+      function getProjectUrl() {
+        if(local === true) {
+          return 'http://localhost:3000'
+        } else {
+          return 'https://lunarcrush-widgets.firebaseapp.com'
+        }
+      }
+
+      function getTestPageUrl() {
+        if (local === true) {
+          return 'https://localhost:5000'
+        } else {
+          return 'https://lunar-widget-test.firebaseapp.com'
+        }
+      }
+
+      var local = true;
+
+      window.onload = function () {
+        var symbol = getQueryVariable('symbol') || 'BTC';
+        var interval = getQueryVariable('interval') || '1 Week';
+        var metric = getQueryVariable('metric') || 'galaxy_score';
+        var projectUrl = getProjectUrl();
+        var testPageUrl = getTestPageUrl();
+        
+        document.getElementById('galaxy-score-widget').src = projectUrl + '/galaxy?stylesheet=' + testPageUrl + '/galaxy-score-widget.css&palette=' + setPalette() + '&symbol=' + symbol + '&interval=' + interval;
+        document.getElementById('social-widget').src = projectUrl + '/social?stylesheet=' + testPageUrl + '/social-widget.css&palette=' + setPalette() + '&symbol=' + symbol + '&interval=' + interval;
+        document.getElementById('news-widget').src = projectUrl + '/news?stylesheet=' + testPageUrl + '/news-widget.css&palette=' + setPalette() + '&symbol=' + symbol + '&interval=' + interval;
+        document.getElementById('metrics-widget-galaxy-score').src = projectUrl + '/metrics?stylesheet=' + testPageUrl + '/metrics-widget.css&palette=' + setPalette() + '&symbol=' + symbol + '&interval=' + interval + '&metric=galaxy_score';
+        document.getElementById('metrics-widget-social-score').src = projectUrl + '/metrics?stylesheet=' + testPageUrl + '/metrics-widget.css&palette=' + setPalette() + '&symbol=' + symbol + '&interval=' + interval + '&metric=social_score';
+        // document.getElementById('metrics-widget-average-sentiment').src = projectUrl + '/metrics?stylesheet=' + testPageUrl + '/metrics-widget.css&palette=' + setPalette() + '&symbol=' + symbol + '&interval=' + interval + '&metric=average_sentiment';
+        document.getElementById('metrics-widget-search-average').src = projectUrl + '/metrics?stylesheet=' + testPageUrl + '/metrics-widget.css&palette=' + setPalette() + '&symbol=' + symbol + '&interval=' + interval + '&metric=search_average';
+      }
+      
+    </script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <img src="/coin-page.png" alt="" width="1700" />
+      <!-- <iframe width="100%" height="500" src="https://lunarcrush-widgets.firebaseapp.com/galaxy"></iframe> -->
+      <!-- <iframe name="galaxy-score-widget" id="galaxy-score" src="https://lunarcrush-widgets.firebaseapp.com/galaxy?stylesheet=https://lunar-widget-test.firebaseapp.com/custom.css" frameborder="0" border="0" cellspacing="0"></iframe> -->
+      <iframe name="galaxy-score-widget" id="galaxy-score-widget" frameborder="0" border="0" cellspacing="0" scrolling="no"></iframe>
+      <iframe name="social-widget" id="social-widget" frameborder="0" border="0" cellspacing="0" scrolling="no"></iframe>
+      <iframe name="metrics-widget-galaxy-score" id="metrics-widget-galaxy-score" class="metrics-widget" frameborder="0" border="0" cellspacing="0" scrolling="no"></iframe>
+      <iframe name="metrics-widget-social-score" id="metrics-widget-social-score" class="metrics-widget" frameborder="0" border="0" cellspacing="0" scrolling="no"></iframe>
+      <!-- <iframe name="metrics-widget-average-sentiment" id="metrics-widget-average-sentiment" class="metrics-widget" frameborder="0"
+        border="0" cellspacing="0" scrolling="no"></iframe> -->
+      <iframe name="metrics-widget-search-average" id="metrics-widget-search-average" class="metrics-widget" frameborder="0"
+        border="0" cellspacing="0" scrolling="no"></iframe>
+      <iframe name="news-widget" id="news-widget" frameborder="0" border="0" cellspacing="0" scrolling="no"></iframe>
+      <!-- <iframe width="100%" height="500" src="https://lunarcrush-widgets.firebaseapp.com/"></iframe> -->
+    </div>
+  </body>
+</html>
