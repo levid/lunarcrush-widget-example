@@ -10,15 +10,15 @@ Widgets can be embedded using a standard iframe tag with a src endpoint of: http
 - https://lunarcrush-widgets.firebaseapp.com/social
 - https://lunarcrush-widgets.firebaseapp.com/metrics
 
-You will need to sign up for a LunarCRUSH free or PRO account and create an API key to be able to render the widgets. 
+You will need to sign up for a LunarCRUSH free or PRO account and create an API key [here](https://lunarcrush.com/settings/api) to be able to render the widgets. 
 
 #### Basic example:
 
-```<iframe name="Galaxy Score" id="galaxy-score-widget" src="https://lunarcrush-widgets.firebaseapp.com/galaxy" frameborder="0" border="0" cellspacing="0" scrolling="no"></iframe>```
+```<iframe name="Galaxy Score" id="galaxy-score-widget" src="https://lunarcrush-widgets.firebaseapp.com/galaxy?key={API_KEY_HERE}&symbol=BTC&interval=1%20Week" frameborder="0" border="0" cellspacing="0" scrolling="no"></iframe>```
 
 #### For more examples how to embed multiple charts see: 
-- https://github.com/levid/lunarcrush-widget-example/blob/master/public/index.html
-- https://github.com/levid/lunarcrush-widget-example/blob/master/public/widgets.html
+- [index.html](https://github.com/levid/lunarcrush-widget-example/blob/master/public/index.html)
+- [widgets.html](https://github.com/levid/lunarcrush-widget-example/blob/master/public/widgets.html)
 
 ### Configuration Options
 
