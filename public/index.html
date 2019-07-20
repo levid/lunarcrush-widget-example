@@ -23,7 +23,6 @@
         left: 1395px;
         top: 550px;
         z-index: 1;
-        background-color: #0f1722;
       }
 
       #social-widget {
@@ -142,7 +141,7 @@
         }
       }
 
-      var local = true;
+      var local = false;
 
       window.onload = function () {
         var symbol = getQueryVariable('symbol') || 'BTC';
@@ -151,13 +150,13 @@
         var projectUrl = getProjectUrl();
         var testPageUrl = getTestPageUrl();
         
-        document.getElementById('galaxy-score-widget').src = projectUrl + '/galaxy?stylesheet=' + testPageUrl + '/galaxy-score-widget.css&palette=' + setPalette() + '&symbol=' + symbol + '&interval=' + interval;
-        document.getElementById('social-widget').src = projectUrl + '/social?stylesheet=' + testPageUrl + '/social-widget.css&palette=' + setPalette() + '&symbol=' + symbol + '&interval=' + interval;
-        document.getElementById('news-widget').src = projectUrl + '/news?stylesheet=' + testPageUrl + '/news-widget.css&palette=' + setPalette() + '&symbol=' + symbol + '&interval=' + interval;
-        document.getElementById('metrics-widget-galaxy-score').src = projectUrl + '/metrics?stylesheet=' + testPageUrl + '/metrics-widget.css&palette=' + setPalette() + '&symbol=' + symbol + '&interval=' + interval + '&metric=galaxy_score';
-        document.getElementById('metrics-widget-social-score').src = projectUrl + '/metrics?stylesheet=' + testPageUrl + '/metrics-widget.css&palette=' + setPalette() + '&symbol=' + symbol + '&interval=' + interval + '&metric=social_score';
+        document.getElementById('galaxy-score-widget').src = projectUrl + '/galaxy?stylesheet=' + testPageUrl + '/theme.css&palette=' + setPalette() + '&symbol=' + symbol + '&interval=' + interval;
+        document.getElementById('social-widget').src = projectUrl + '/social?stylesheet=' + testPageUrl + '/theme.css&palette=' + setPalette() + '&symbol=' + symbol + '&interval=' + interval;
+        document.getElementById('news-widget').src = projectUrl + '/news?stylesheet=' + testPageUrl + '/theme.css&palette=' + setPalette() + '&symbol=' + symbol + '&interval=' + interval;
+        document.getElementById('metrics-widget-galaxy-score').src = projectUrl + '/metrics?stylesheet=' + testPageUrl + '/theme.css&palette=' + setPalette() + '&symbol=' + symbol + '&interval=' + interval + '&metric=galaxy_score';
+        document.getElementById('metrics-widget-social-score').src = projectUrl + '/metrics?stylesheet=' + testPageUrl + '/theme.css&palette=' + setPalette() + '&symbol=' + symbol + '&interval=' + interval + '&metric=social_score';
         // document.getElementById('metrics-widget-average-sentiment').src = projectUrl + '/metrics?stylesheet=' + testPageUrl + '/metrics-widget.css&palette=' + setPalette() + '&symbol=' + symbol + '&interval=' + interval + '&metric=average_sentiment';
-        document.getElementById('metrics-widget-search-average').src = projectUrl + '/metrics?stylesheet=' + testPageUrl + '/metrics-widget.css&palette=' + setPalette() + '&symbol=' + symbol + '&interval=' + interval + '&metric=search_average';
+        document.getElementById('metrics-widget-search-average').src = projectUrl + '/metrics?stylesheet=' + testPageUrl + '/theme.css&palette=' + setPalette() + '&symbol=' + symbol + '&interval=' + interval + '&metric=search_average';
       }
       
     </script>
