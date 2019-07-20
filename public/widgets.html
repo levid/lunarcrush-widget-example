@@ -3,25 +3,16 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Parent Window</title>
+  <title>LunarCRUSH Embedded iFrame Widget Example</title>
   <style>
     body,
     html {
       margin: 0;
       padding: 30;
       width: 100%;
+      color: #fff;
       background-color: #0f1722;
     }
-
-    /* .metrics-widget {
-      border-style: none;
-      width: 1000px;
-      height: 250px;
-      font-family: 'Roboto', sans-serif;
-      position: relative;
-      left: 340px;
-      background-color: #0f1722;
-    } */
   </style>
 </head>
 
@@ -56,7 +47,6 @@
       iframe.style.width = '100%';
       iframe.style.height = '300px';
       document.body.appendChild(iframe);
-      // Send a message to the child iframe
       var iframeEl = document.getElementById(id);
       return iframeEl;
     }
@@ -83,13 +73,12 @@
     function sendMessage(msg) {
       // Make sure you are sending a string, and to stringify JSON
       // iframe.contentWindow.postMessage(msg, '*');
-
       window.frames.forEach(function(frame) {
         frame.contentWindow.postMessage(msg, '*');
       })
     };
 
-    function getProjectUrl() {
+    function getWidgetUrl() {
       if (local === true) {
         return 'http://localhost:3000'
       } else {
@@ -139,77 +128,41 @@
       }
     }
 
-    var symbol = getQueryVariable('symbol') || 'BTC';
-    var interval = getQueryVariable('interval') || '1 Week';
-    var priceCorrelation = getQueryVariable('price_correlation') || false;
-    var theme = getTheme();
-    var projectUrl = getProjectUrl();
-    var testPageUrl = getTestPageUrl();
-
     var local = false;
 
-    // Create iFrames
-    // var galaxyScoreWidget = createIframe('galaxy-score', 'http://localhost:3000/galaxy?stylesheet=http://localhost:5000/galaxy-score-widget.css&theme=http://localhost:5000/dark-theme.js&palette=' + theme + '&symbol=' + symbol + '&interval=' + interval);
-    var galaxyScoreWidget = createIframe('galaxy-score', projectUrl + '/galaxy?stylesheet=' + testPageUrl + '/theme.css&palette=' + theme + '&symbol=' + symbol + '&interval=' + interval);
-    var newsWidget = createIframe('news', projectUrl + '/news?stylesheet=' + testPageUrl + '/theme.css&palette=' + theme + '&symbol=' + symbol + '&interval=' + interval);
-    var socialWidget = createIframe('social', projectUrl + '/social?stylesheet=' + testPageUrl + '/theme.css&palette=' + theme + '&symbol=' + symbol + '&interval=' + interval);
-    var metricsWidgetGalaxyScore = createIframe('metrics1', projectUrl + '/metrics?stylesheet=' + testPageUrl + '/theme.css&palette=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=galaxy_score&price_correlation=' + priceCorrelation);
-    var metricsWidgetAverageSentiment = createIframe('metrics2', projectUrl + '/metrics?stylesheet=' + testPageUrl + '/theme.css&palette=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=average_sentiment&price_correlation=' + priceCorrelation);
-    var metricsWidgetPriceScore = createIframe('metrics3', projectUrl + '/metrics?stylesheet=' + testPageUrl + '/theme.css&palette=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=price_score&price_correlation=' + priceCorrelation);
-    var metricsWidgetSocialImpactScore = createIframe('metrics4', projectUrl + '/metrics?stylesheet=' + testPageUrl + '/theme.css&palette=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=social_impact_score&price_correlation=' + priceCorrelation);
-    var metricsWidgetCorrelationRank = createIframe('metrics5', projectUrl + '/metrics?stylesheet=' + testPageUrl + '/theme.css&palette=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=correlation_rank&price_correlation=' + priceCorrelation);
+    window.onload = function () {
+      var symbol = getQueryVariable('symbol') || 'BTC';
+      var interval = getQueryVariable('interval') || '1 Week';
+      var priceCorrelation = getQueryVariable('price_correlation') || false;
+      var key = getQueryVariable('key');
+      var theme = getTheme();
+      var widgetUrl = getWidgetUrl();
+      var testPageUrl = getTestPageUrl();
 
-    // var availableMetrics = {
-    //   average_sentiment: 'Average Sentiment',
-    //   correlation_rank: 'Correlation Rank',
-    //   galaxy_score: 'Galaxy Score',
-    //   market_cap: 'Market Cap',
-    //   market_cap_rank: 'Market Cap Rank',
-    //   news_articles: 'News Volume',
-    //   popular_tweet: 'Popular Tweets',
-    //   price_btc: 'Price BTC',
-    //   price_score: 'Price Score',
-    //   priceclose: 'Price Close',
-    //   pricehigh: 'Price High',
-    //   pricelow: 'Price Low',
-    //   priceopen: 'Price Open',
-    //   reddit_comment: 'Reddit Comments',
-    //   reddit_post: 'Reddit Posts',
-    //   reddit_post_reddit_comment: 'Reddit Volume',
-    //   search_average: 'Search Volume',
-    //   social_impact_score: 'Social Impact Score',
-    //   social_score: 'Social Volume',
-    //   tweet: 'Twitter Volume',
-    //   tweet_sentiment1: 'Very Bearish Sentiment',
-    //   tweet_sentiment2: 'Bearish Sentiment',
-    //   tweet_sentiment2_tweet_sentiment1: 'Negative Sentiment',
-    //   tweet_sentiment3: 'Neutral Sentiment',
-    //   tweet_sentiment4: 'Bullish Sentiment',
-    //   tweet_sentiment5: 'Very Bullish Sentiment',
-    //   tweet_sentiment4_sentiment5: 'Positive Sentiment',
-    //   tweet_sentiment_impact1: 'Very Bearish Sentiment Impact',
-    //   tweet_sentiment_impact2: 'Bearish Sentiment Impact',
-    //   tweet_sentiment_impact3: 'Neutral Sentiment Impact',
-    //   tweet_sentiment_impact4: 'Bullish Sentiment Impact',
-    //   tweet_sentiment_impact5: 'Very Bullish Sentiment Impact',
-    //   tweet_spam: 'Spam Volume',
-    //   volatility: 'Volatility',
-    //   volumefrom: 'Market Volume Open',
-    //   volumeto: 'Market Volume Close'
-    // }
+      // Create iFrames
+      // var galaxyScoreWidget = createIframe('galaxy-score', 'http://localhost:3000/galaxy?stylesheet=http://localhost:5000/galaxy-score-widget.css&theme=http://localhost:5000/dark-theme.js&palette=' + theme + '&symbol=' + symbol + '&interval=' + interval);
+      var galaxyScoreWidget = createIframe('galaxy-score', widgetUrl + '/galaxy?key=' + key + '&stylesheet=' + testPageUrl + '/theme.css&palette=' + theme + '&symbol=' + symbol + '&interval=' + interval);
+      var newsWidget = createIframe('news', widgetUrl + '/news?key=' + key + '&stylesheet=' + testPageUrl + '/theme.css&palette=' + theme + '&symbol=' + symbol + '&interval=' + interval);
+      var socialWidget = createIframe('social', widgetUrl + '/social?key=' + key + '&stylesheet=' + testPageUrl + '/theme.css&palette=' + theme + '&symbol=' + symbol + '&interval=' + interval);
+      var metricsWidgetGalaxyScore = createIframe('metrics1', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme.css&palette=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=galaxy_score&price_correlation=' + priceCorrelation);
+      var metricsWidgetAverageSentiment = createIframe('metrics2', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme.css&palette=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=average_sentiment&price_correlation=' + priceCorrelation);
+      var metricsWidgetPriceScore = createIframe('metrics3', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme.css&palette=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=price_score&price_correlation=' + priceCorrelation);
+      var metricsWidgetSocialImpactScore = createIframe('metrics4', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme.css&palette=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=social_impact_score&price_correlation=' + priceCorrelation);
+      var metricsWidgetCorrelationRank = createIframe('metrics5', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme.css&palette=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=correlation_rank&price_correlation=' + priceCorrelation);
 
-    // var messageButton = document.getElementById('message_button');
-    // var results = document.getElementById('results');
-    // // Send random messge data on every button click
-    // bindEvent(messageButton, 'click', function (e) {
-    //   var random = Math.random();
-    //   sendMessage('' + random);
-    // });
-    // // Listen to message from child window
-    // bindEvent(window, 'message', function (e) {
-    //   sendMessage('' + e.data);
-    //   results.innerHTML = e.data;
-    // });
+      // var messageButton = document.getElementById('message_button');
+      // var results = document.getElementById('results');
+      // // Send random messge data on every button click
+      // bindEvent(messageButton, 'click', function (e) {
+      //   var random = Math.random();
+      //   sendMessage('' + random);
+      // });
+      // // Listen to message from child window
+      // bindEvent(window, 'message', function (e) {
+      //   sendMessage('' + e.data);
+      //   results.innerHTML = e.data;
+      // });
+    }
   </script>
 </body>
 

@@ -1,5 +1,44 @@
 # lunarcrush-widget-example
 
+This repository contains example code demonstrating how to use LunarCRUSH embeddable widgets.
+  
+### How To Embed Widgets
+
+Widgets can be embedded using a standard iframe tag with a src endpoint of: https://lunarcrush-widgets.firebaseapp.com. Specific widgets can be rendered using one of the following url paths:
+- https://lunarcrush-widgets.firebaseapp.com/galaxy
+- https://lunarcrush-widgets.firebaseapp.com/news
+- https://lunarcrush-widgets.firebaseapp.com/social
+- https://lunarcrush-widgets.firebaseapp.com/metrics
+
+You will need to sign up for a LunarCRUSH free or PRO account and create an API key to be able to render the widgets. 
+
+#### Basic example:
+
+```<iframe name="Galaxy Score" id="galaxy-score-widget" src="https://lunarcrush-widgets.firebaseapp.com/galaxy" frameborder="0" border="0" cellspacing="0" scrolling="no"></iframe>```
+
+#### For more examples how to embed multiple charts see: 
+- https://github.com/levid/lunarcrush-widget-example/blob/master/public/index.html
+- https://github.com/levid/lunarcrush-widget-example/blob/master/public/widgets.html
+
+### Configuration Options
+
+It is possible to configure the widgets using url params appended to the iFrame src url. For example:
+  
+  * ?key={API_KEY_HERE} - Required to render the widgets.
+  * ?symbol=BTC - Change the symbol that is displayed in the widgets.
+  * ?interval=1 Week - Change the time interval being displayed in the charts (default is 1 Week).
+  * ?price_correlation=true|false - Show a price line in addition to the selected metric
+  * ?metric=galaxy_score - Change the timeseries metric being displayed (Metric widget only).
+  * ?theme={See themes section for instructions}
+
+### Themes
+
+Coming soon...
+
+### Communicating Between Widgets
+
+Coming soon...
+
 ### Current Widgets
 
 * Galaxy Score Widget
@@ -46,4 +85,3 @@
     - volatility (Volatility)
     - volumefrom (Market Volume Open)
     - volumeto (Market Volume Close)
-  
