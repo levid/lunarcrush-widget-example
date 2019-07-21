@@ -1,6 +1,12 @@
 # lunarcrush-widget-example
 
 This repository contains example code demonstrating how to use LunarCRUSH embeddable widgets.
+
+### Running the example
+```
+$ npm install
+$ python -m SimpleHTTPServer 5000
+```
   
 ### How To Embed Widgets
 
@@ -33,7 +39,39 @@ It is possible to configure the widgets using url params appended to the iFrame 
 
 ### Themes
 
-Coming soon...
+```
+var theme = {
+  type: 'dark',
+  common: { black: 'rgba(0, 0, 0, 1)', white: 'rgba(255, 255, 255, 1)' },
+  background: { paper: '#202327', default: '#0e1722' },
+  primary: {
+    light: '#7ed31f',
+    main: '#7ed31f',
+    dark: '#7ed31f',
+  },
+  secondary: {
+    light: '#ff2800',
+    main: '#ff2800',
+    dark: '#ff2800',
+  },
+  error: {
+    light: 'rgba(229, 115, 115, 1)',
+    main: 'rgba(244, 67, 54, 1)',
+    dark: 'rgba(211, 47, 47, 1)',
+  },
+  text: {
+    primary: 'rgba(255, 255, 255, 0.87)',
+    secondary: 'rgba(209, 209, 209, 0.54)',
+    disabled: 'rgba(134, 134, 134, 0.38)',
+    hint: 'rgba(0, 0, 0, 0.38)'
+  },
+  typography: {
+    fontFamily: "'Roboto', sans-serif",
+    fontWeight: 300
+  },
+  poweredByText: '#69d8ee'
+}
+```
 
 ### Communicating Between Widgets
 
