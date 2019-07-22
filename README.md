@@ -46,14 +46,14 @@ var theme = {
     common: { black: 'rgba(0, 0, 0, 1)', white: 'rgba(255, 255, 255, 1)' },
     background: { paper: '#202327', default: '#0e1722' },
     primary: {
-      light: '#7ed31f',
-      main: '#7ed31f',
-      dark: '#7ed31f',
+      light: 'rgba(126,211,32, 1)',
+      main: 'rgba(126,211,32, 1)',
+      dark: 'rgba(126,211,32, 1)',
     },
     secondary: {
-      light: '#ff2800',
-      main: '#ff2800',
-      dark: '#ff2800',
+      light: 'rgba(255,39,0, 1)',
+      main: 'rgba(255,39,0, 1)',
+      dark: 'rgba(255,39,0, 1)',
     },
     error: {
       light: 'rgba(229, 115, 115, 1)',
@@ -70,8 +70,8 @@ var theme = {
       fontFamily: "'Roboto', sans-serif",
       fontWeight: 300
     },
-    poweredByTextColor: '#69d8ee',
-    priceCorrelationLineColor: '#69d8ee',
+    poweredByTextColor: 'rgb(105, 216, 238)',
+    priceCorrelationLineColor: 'rgb(105, 216, 238)',
     positiveAreaChartColor: 'rgba(126,211,32, 0.2)',
     positiveLineColor: 'rgba(126,211,32, 1)',
     negativeAreaChartColor: 'rgba(255,39,0, 0.2)',
