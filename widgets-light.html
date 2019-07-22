@@ -10,8 +10,8 @@
       margin: 0;
       padding: 30;
       width: 100%;
-      color: #fff;
-      background-color: #0f1722;
+      color: #000;
+      background-color: #fff;
     }
   </style>
 </head>
@@ -68,12 +68,12 @@
     function getTheme() {
       return window.btoa(JSON.stringify(theme));
     }
-    
+
     // Send a message to the child iframe
     function sendMessage(msg) {
       // Make sure you are sending a string, and to stringify JSON
       // iframe.contentWindow.postMessage(msg, '*');
-      window.frames.forEach(function(frame) {
+      window.frames.forEach(function (frame) {
         frame.contentWindow.postMessage(msg, '*');
       })
     };
@@ -97,9 +97,9 @@
 
     // global theme object
     var theme = {
-      type: 'dark',
-      common: { black: 'rgba(0, 0, 0, 1)', white: 'rgba(255, 255, 255, 1)' },
-      background: { paper: '#202327', default: '#0e1722' },
+      type: 'light',
+      common: { black: '#000', white: '#fff' },
+      background: { paper: '#fff', default: 'rgba(249, 249, 249, 1)' },
       primary: {
         light: '#7ed31f',
         main: '#7ed31f',
@@ -116,9 +116,9 @@
         dark: 'rgba(211, 47, 47, 1)',
       },
       text: {
-        primary: 'rgba(255, 255, 255, 0.87)',
-        secondary: 'rgba(209, 209, 209, 0.54)',
-        disabled: 'rgba(134, 134, 134, 0.38)',
+        primary: 'rgba(0, 0, 0, 0.8)',
+        secondary: 'rgba(0, 0, 0, 0.54)',
+        disabled: 'rgba(0, 0, 0, 0.38)',
         hint: 'rgba(0, 0, 0, 0.38)'
       },
       typography: {
@@ -146,14 +146,14 @@
 
       // Create iFrames
       // var galaxyScoreWidget = createIframe('galaxy-score', 'http://localhost:3000/galaxy?stylesheet=http://localhost:5000/galaxy-score-widget.css&theme=http://localhost:5000/dark-theme.js&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval);
-      var galaxyScoreWidget = createIframe('galaxy-score', widgetUrl + '/galaxy?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval);
-      var newsWidget = createIframe('news', widgetUrl + '/news?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval);
-      var socialWidget = createIframe('social', widgetUrl + '/social?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval);
-      var metricsWidgetGalaxyScore = createIframe('metrics1', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=galaxy_score&price_correlation=' + priceCorrelation);
-      var metricsWidgetAverageSentiment = createIframe('metrics2', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=average_sentiment&price_correlation=' + priceCorrelation);
-      var metricsWidgetPriceScore = createIframe('metrics3', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=price_score&price_correlation=' + priceCorrelation);
-      var metricsWidgetSocialImpactScore = createIframe('metrics4', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=social_impact_score&price_correlation=' + priceCorrelation);
-      var metricsWidgetCorrelationRank = createIframe('metrics5', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=correlation_rank&price_correlation=' + priceCorrelation);
+      var galaxyScoreWidget = createIframe('galaxy-score', widgetUrl + '/galaxy?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval);
+      var newsWidget = createIframe('news', widgetUrl + '/news?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval);
+      var socialWidget = createIframe('social', widgetUrl + '/social?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval);
+      var metricsWidgetGalaxyScore = createIframe('metrics1', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=galaxy_score&price_correlation=' + priceCorrelation);
+      var metricsWidgetAverageSentiment = createIframe('metrics2', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=average_sentiment&price_correlation=' + priceCorrelation);
+      var metricsWidgetPriceScore = createIframe('metrics3', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=price_score&price_correlation=' + priceCorrelation);
+      var metricsWidgetSocialImpactScore = createIframe('metrics4', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=social_impact_score&price_correlation=' + priceCorrelation);
+      var metricsWidgetCorrelationRank = createIframe('metrics5', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=correlation_rank&price_correlation=' + priceCorrelation);
 
       // var messageButton = document.getElementById('message_button');
       // var results = document.getElementById('results');
