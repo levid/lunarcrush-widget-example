@@ -41,7 +41,12 @@ It is possible to configure the widgets using url params appended to the iFrame 
 
 Theming is very basic at this point but it is possible to configure primary and secondary colors used throughout the widgets as well as line colors in the Metrics widget.
 
-Dark theme example: 
+Dark theme example: https://lunar-widget-test.firebaseapp.com/widgets.html
+
+Light theme example: https://lunar-widget-test.firebaseapp.com/widgets-light.html
+
+#### Creating a custom theme
+
 ```
 var theme = {
   type: 'dark',
