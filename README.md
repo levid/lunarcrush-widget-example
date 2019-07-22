@@ -4,8 +4,8 @@ This repository contains example code demonstrating how to use LunarCRUSH embedd
 
 ### Running the example
 ```
-$ npm install
 $ python -m SimpleHTTPServer 5000
+Open http://localhost:5000 in a browser
 ```
 
 ### How To Embed Widgets
