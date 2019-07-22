@@ -40,42 +40,44 @@ It is possible to configure the widgets using url params appended to the iFrame 
 ### Themes
 
 Theming is very basic at this point but it is possible to configure primary and secondary colors used throughout the widgets as well as line colors in the Metrics widget.
+
+Dark theme example: 
 ```
 var theme = {
   type: 'dark',
-    common: { black: 'rgba(0, 0, 0, 1)', white: 'rgba(255, 255, 255, 1)' },
-    background: { paper: '#202327', default: '#0e1722' },
-    primary: {
-      light: 'rgba(126,211,32, 1)',
-      main: 'rgba(126,211,32, 1)',
-      dark: 'rgba(126,211,32, 1)',
-    },
-    secondary: {
-      light: 'rgba(255,39,0, 1)',
-      main: 'rgba(255,39,0, 1)',
-      dark: 'rgba(255,39,0, 1)',
-    },
-    error: {
-      light: 'rgba(229, 115, 115, 1)',
-      main: 'rgba(244, 67, 54, 1)',
-      dark: 'rgba(211, 47, 47, 1)',
-    },
-    text: {
-      primary: 'rgba(255, 255, 255, 0.87)',
-      secondary: 'rgba(209, 209, 209, 0.54)',
-      disabled: 'rgba(134, 134, 134, 0.38)',
-      hint: 'rgba(0, 0, 0, 0.38)'
-    },
-    typography: {
-      fontFamily: "'Roboto', sans-serif",
-      fontWeight: 300
-    },
-    poweredByTextColor: 'rgb(105, 216, 238)',
-    priceCorrelationLineColor: 'rgb(105, 216, 238)',
-    positiveAreaChartColor: 'rgba(126,211,32, 0.2)',
-    positiveLineColor: 'rgba(126,211,32, 1)',
-    negativeAreaChartColor: 'rgba(255,39,0, 0.2)',
-    negativeLineColor: 'rgba(255,39,0, 1)',
+  common: { black: 'rgba(0, 0, 0, 1)', white: 'rgba(255, 255, 255, 1)' },
+  background: { paper: '#202327', default: '#0e1722' },
+  primary: {
+    light: '#7ed31f',
+    main: '#7ed31f',
+    dark: '#7ed31f',
+  },
+  secondary: {
+    light: '#ff2800',
+    main: '#ff2800',
+    dark: '#ff2800',
+  },
+  error: {
+    light: 'rgba(229, 115, 115, 1)',
+    main: 'rgba(244, 67, 54, 1)',
+    dark: 'rgba(211, 47, 47, 1)',
+  },
+  text: {
+    primary: 'rgba(255, 255, 255, 0.87)',
+    secondary: 'rgba(209, 209, 209, 0.54)',
+    disabled: 'rgba(134, 134, 134, 0.38)',
+    hint: 'rgba(0, 0, 0, 0.38)'
+  },
+  typography: {
+    fontFamily: "'Roboto', sans-serif",
+    fontWeight: 300
+  },
+  poweredByTextColor: '#69d8ee',
+  priceCorrelationLineColor: '#69d8ee',
+  positiveAreaChartColor: 'rgba(126,211,32, 0.2)',
+  positiveLineColor: 'rgba(126,211,32, 1)',
+  negativeAreaChartColor: 'rgba(255,39,0, 0.2)',
+  negativeLineColor: 'rgba(255,39,0, 1)',
 }
 
 var serializedTheme = window.btoa(JSON.stringify(theme));
