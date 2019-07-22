@@ -7,14 +7,14 @@ This repository contains example code demonstrating how to use LunarCRUSH embedd
 $ npm install
 $ python -m SimpleHTTPServer 5000
 ```
-  
+
 ### How To Embed Widgets
 
 Widgets can be embedded using a standard iframe tag with a src endpoint of: https://lunarcrush-widgets.firebaseapp.com. Specific widgets can be rendered using one of the following url paths:
-- https://lunarcrush-widgets.firebaseapp.com/galaxy
-- https://lunarcrush-widgets.firebaseapp.com/news
-- https://lunarcrush-widgets.firebaseapp.com/social
-- https://lunarcrush-widgets.firebaseapp.com/metrics
+- /galaxy
+- /news
+- /social
+- /metrics
 
 You will need to sign up for a LunarCRUSH free or PRO account and create an API key [here](https://lunarcrush.com/settings/api) to be able to render the widgets. 
 
@@ -23,8 +23,8 @@ You will need to sign up for a LunarCRUSH free or PRO account and create an API 
 ```<iframe name="Galaxy Score" id="galaxy-score-widget" src="https://lunarcrush-widgets.firebaseapp.com/galaxy?key={API_KEY_HERE}&symbol=BTC&interval=1%20Week" frameborder="0" border="0" cellspacing="0" scrolling="no"></iframe>```
 
 #### For more examples how to embed multiple charts see: 
-- [index.html](https://github.com/levid/lunarcrush-widget-example/blob/master/public/index.html)
-- [widgets.html](https://github.com/levid/lunarcrush-widget-example/blob/master/public/widgets.html)
+- https://github.com/levid/lunarcrush-widget-example/blob/master/index.html
+- https://github.com/levid/lunarcrush-widget-example/blob/master/widgets.html
 
 ### Configuration Options
 
@@ -39,38 +39,49 @@ It is possible to configure the widgets using url params appended to the iFrame 
 
 ### Themes
 
+Theming is very basic at this point but it is possible to configure primary and secondary colors used throughout the widgets as well as line colors in the Metrics widget.
 ```
 var theme = {
   type: 'dark',
-  common: { black: 'rgba(0, 0, 0, 1)', white: 'rgba(255, 255, 255, 1)' },
-  background: { paper: '#202327', default: '#0e1722' },
-  primary: {
-    light: '#7ed31f',
-    main: '#7ed31f',
-    dark: '#7ed31f',
-  },
-  secondary: {
-    light: '#ff2800',
-    main: '#ff2800',
-    dark: '#ff2800',
-  },
-  error: {
-    light: 'rgba(229, 115, 115, 1)',
-    main: 'rgba(244, 67, 54, 1)',
-    dark: 'rgba(211, 47, 47, 1)',
-  },
-  text: {
-    primary: 'rgba(255, 255, 255, 0.87)',
-    secondary: 'rgba(209, 209, 209, 0.54)',
-    disabled: 'rgba(134, 134, 134, 0.38)',
-    hint: 'rgba(0, 0, 0, 0.38)'
-  },
-  typography: {
-    fontFamily: "'Roboto', sans-serif",
-    fontWeight: 300
-  },
-  poweredByText: '#69d8ee'
+    common: { black: 'rgba(0, 0, 0, 1)', white: 'rgba(255, 255, 255, 1)' },
+    background: { paper: '#202327', default: '#0e1722' },
+    primary: {
+      light: '#7ed31f',
+      main: '#7ed31f',
+      dark: '#7ed31f',
+    },
+    secondary: {
+      light: '#ff2800',
+      main: '#ff2800',
+      dark: '#ff2800',
+    },
+    error: {
+      light: 'rgba(229, 115, 115, 1)',
+      main: 'rgba(244, 67, 54, 1)',
+      dark: 'rgba(211, 47, 47, 1)',
+    },
+    text: {
+      primary: 'rgba(255, 255, 255, 0.87)',
+      secondary: 'rgba(209, 209, 209, 0.54)',
+      disabled: 'rgba(134, 134, 134, 0.38)',
+      hint: 'rgba(0, 0, 0, 0.38)'
+    },
+    typography: {
+      fontFamily: "'Roboto', sans-serif",
+      fontWeight: 300
+    },
+    poweredByTextColor: '#69d8ee',
+    priceCorrelationLineColor: '#69d8ee',
+    positiveAreaChartColor: 'rgba(126,211,32, 0.2)',
+    positiveLineColor: 'rgba(126,211,32, 1)',
+    negativeAreaChartColor: 'rgba(255,39,0, 0.2)',
+    negativeLineColor: 'rgba(255,39,0, 1)',
 }
+
+var serializedTheme = window.btoa(JSON.stringify(theme));
+
+// Example of passing the serialized theme as a query param into a widget.
+<iframe name="Galaxy Score" id="galaxy-score-widget" src=`https://lunarcrush-widgets.firebaseapp.com/galaxy?key=${API_KEY_HERE}&theme=${serializedTheme}` frameborder="0" border="0" cellspacing="0" scrolling="no"></iframe>
 ```
 
 ### Communicating Between Widgets

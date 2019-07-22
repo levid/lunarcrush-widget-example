@@ -125,10 +125,15 @@
         fontFamily: "'Roboto', sans-serif",
         fontWeight: 300
       },
-      poweredByText: '#69d8ee'
+      poweredByTextColor: '#69d8ee',
+      priceCorrelationLineColor: '#69d8ee',
+      positiveAreaChartColor: 'rgba(126,211,32, 0.2)',
+      positiveLineColor: 'rgba(126,211,32, 1)',
+      negativeAreaChartColor: 'rgba(255,39,0, 0.2)',
+      negativeLineColor: 'rgba(255,39,0, 1)',
     }
 
-    var local = false;
+    var local = true;
 
     window.onload = function () {
       var symbol = getQueryVariable('symbol') || 'BTC';
