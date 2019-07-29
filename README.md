@@ -53,19 +53,19 @@ var theme = {
   common: { black: 'rgba(0, 0, 0, 1)', white: 'rgba(255, 255, 255, 1)' },
   background: { paper: '#202327', default: '#0e1722' },
   primary: {
-    light: '#7ed31f',
-    main: '#7ed31f',
-    dark: '#7ed31f',
+    light: 'rgba(126,211,32, 1)',
+    main: 'rgba(126,211,32, 1)',
+    dark: 'rgba(126,211,32, 1)'
   },
   secondary: {
-    light: '#ff2800',
-    main: '#ff2800',
-    dark: '#ff2800',
+    light: 'rgba(255,39,0, 1)',
+    main: 'rgba(255,39,0, 1)',
+    dark: 'rgba(255,39,0, 1)'
   },
   error: {
     light: 'rgba(229, 115, 115, 1)',
     main: 'rgba(244, 67, 54, 1)',
-    dark: 'rgba(211, 47, 47, 1)',
+    dark: 'rgba(211, 47, 47, 1)'
   },
   text: {
     primary: 'rgba(255, 255, 255, 0.87)',
@@ -74,21 +74,77 @@ var theme = {
     hint: 'rgba(0, 0, 0, 0.38)'
   },
   typography: {
-    fontFamily: "'Roboto', sans-serif",
+    fontFamily: "'Uniform', sans-serif",
     fontWeight: 300
   },
   poweredByTextColor: '#69d8ee',
-  priceCorrelationLineColor: '#69d8ee',
-  positiveAreaChartColor: 'rgba(126,211,32, 0.2)',
-  positiveLineColor: 'rgba(126,211,32, 1)',
-  negativeAreaChartColor: 'rgba(255,39,0, 0.2)',
-  negativeLineColor: 'rgba(255,39,0, 1)',
+  loadingIndicatorColor: 'rgba(133, 139, 146, 1)',
+  metricsWidget: {
+    yAxisTitleColor: '#fff',
+    yAxisLabelColor: 'rgba(255,255,255,0.5)',
+    xAxisLineColor: '#3c3f42',
+    xAxisTickColor: '#3c3f42',
+    xAxisLabelColor: 'rgba(255,255,255,0.5)',
+    pointLabelColor: '#fff',
+    gridLineColor: '#3c3f42',
+    tooltipBackgroundColor: '#000',
+    tooltipTextColor: 'rgba(255,255,255,0.8)',
+    priceCorrelationLineColor: '#69d8ee',
+    positiveAreaChartColor: 'rgba(126,211,32, 0.2)',
+    positiveLineColor: 'rgba(126,211,32, 1)',
+    negativeAreaChartColor: 'rgba(255,39,0, 0.2)',
+    negativeLineColor: 'rgba(255,39,0, 1)',
+  },
+  galaxyScoreWidget: {
+    titleColor: '#fff',
+    trackBackgroundColor: 'rgba(255,255,255,0.1)',
+    bullishBarColor: '#7ed31f',
+    neutralBarColor: 'rgba(133, 139, 146, 0.5)',
+    bearishBarColor: 'rgba(244, 67, 54, 1)',
+    bullishTextColor: '#7ed31f',
+    neutralTextColor: 'rgba(133, 139, 146, 1)',
+    bearishTextColor: 'rgba(244, 67, 54, 1)',
+    separatorColor: '#fff',
+    scoreTextColor: '#fff',
+    infoIconColor: 'rgba(133, 139, 146, 1)',
+    tooltipBackgroundColor: '#000',
+    tooltipTextColor: '#fff'
+  }
 }
 
 var serializedTheme = window.btoa(JSON.stringify(theme));
 
 // Example of passing the serialized theme as a query param into a widget.
 <iframe name="Galaxy Score" id="galaxy-score-widget" src=`https://lunarcrush-widgets.firebaseapp.com/galaxy?key=${API_KEY_HERE}&theme=${serializedTheme}` frameborder="0" border="0" cellspacing="0" scrolling="no"></iframe>
+```
+
+#### Using a custom CSS stylesheet
+
+It is also possible to pass in your own custom stylesheet file to override page and component styles inside the widget iframe. This will need to be hosted on a public domain.
+
+```
+/* styles.css */
+/* Include custom fonts */
+@import url(https://fonts.googleapis.com/css?family=Roboto&display=swap);
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	backgroundColor: #0e1722;
+	color: #fff;
+	font-family: 'Roboto', sans-serif;
+}
+
+a {
+	color: #69d8ee;
+	text-decoration: none;
+}
+
+// Example of passing the custom stylesheet as a query param into a widget.
+<iframe name="Galaxy Score" id="galaxy-score-widget" src=`https://lunarcrush-widgets.firebaseapp.com/galaxy?key=${API_KEY_HERE}&stylesheet=https://yourdomain.com/styles.css` frameborder="0" border="0" cellspacing="0" scrolling="no"></iframe>
+
 ```
 
 ### Communicating Between Widgets
