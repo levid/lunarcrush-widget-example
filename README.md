@@ -120,26 +120,38 @@ var serializedTheme = window.btoa(JSON.stringify(theme));
 
 #### Using a custom CSS stylesheet
 
-It is also possible to pass in your own custom stylesheet file to override page and component styles inside the widget iframe. This will need to be hosted on a public domain.
+It is also possible to pass in your own custom stylesheet file to override page and component styles inside the widget iframe. This will need to be hosted on a public domain to make it accessible to the widget.
 
 ```
 /* styles.css */
 /* Include custom fonts */
 @import url(https://fonts.googleapis.com/css?family=Roboto&display=swap);
 
+/* Override global body styles */
 html,
 body {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	backgroundColor: #0e1722;
+	background-color: #0e1722;
 	color: #fff;
 	font-family: 'Roboto', sans-serif;
 }
 
+/* Override link colors */
 a {
 	color: #69d8ee;
 	text-decoration: none;
+}
+
+/* Override specific UI element styles */
+.loading-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex: 1;
+	height: 100vh;
+  background-color: #fff
 }
 
 // Example of passing the custom stylesheet as a query param into a widget.
