@@ -33,8 +33,9 @@ It is possible to configure the widgets using url params appended to the iFrame 
   * ?key={API_KEY_HERE} - Required to render the widgets.
   * ?symbol=BTC - Change the symbol that is displayed in the widgets.
   * ?interval=1 Week - Change the time interval being displayed in the charts (default is 1 Week).
-  * ?price_correlation=true|false - Show a price line in addition to the selected metric
+  * ?price_correlation=true|false - Show a price line in addition to the selected metric (default = false)
   * ?metric=galaxy_score - Change the timeseries metric being displayed (Metric widget only).
+  * ?animation=true|false - Show or hide component animations (default = true)
   * ?theme={See themes section for instructions}
 
 ### Themes
