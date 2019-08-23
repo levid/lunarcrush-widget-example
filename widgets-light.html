@@ -34,7 +34,7 @@
     }
 
     // helper function to create iframes
-    function createIframe(id, src) {
+    function createIframe(id, src, width, height) {
       var iframeSource = src;
       // Create the iframe
       var iframe = document.createElement('iframe');
@@ -44,8 +44,8 @@
       iframe.setAttribute('border', 0);
       iframe.setAttribute('cellspacing', 0);
       iframe.setAttribute('scrolling', 'no');
-      iframe.style.width = '100%';
-      iframe.style.height = '300px';
+      iframe.style.width = width || '100%';
+      iframe.style.height = height || '300px';
       document.body.appendChild(iframe);
       var iframeEl = document.getElementById(id);
       return iframeEl;
@@ -176,6 +176,32 @@
         bullishTextColor: '#7ed31f',
         neutralTextColor: 'rgba(133, 139, 146, 1)',
         bearishTextColor: 'rgba(244, 67, 54, 1)',
+      },
+      wordCloudWidget: {
+        width: '100%',
+        height: 400,
+        colors: ['#fafafa', 'rgba(244, 67, 54, 1)', '#7ed31f', '#69d8ee']
+      },
+      candlestickWidget: {
+        yAxisTitleColor: '#fff',
+        yAxisLabelColor: 'rgba(255,255,255,0.5)',
+        xAxisLineColor: '#3c3f42',
+        xAxisTickColor: '#3c3f42',
+        xAxisLabelColor: 'rgba(255,255,255,0.5)',
+        pointLabelColor: '#fff',
+        gridLineColor: '#3c3f42',
+        tooltipBackgroundColor: '#000',
+        tooltipTextColor: 'rgba(255,255,255,0.8)',
+        metricLineColor: '#69d8ee',
+        highPriceBarColor: 'rgba(104,212, 131,0.8)',
+        highPriceLineColor: 'rgba(104,212, 131,0.8)',
+        lowPriceBarColor: 'rgba(243,69,80, 0.8)',
+        lowPriceLineColor: 'rgba(243,69,80, 0.8)',
+        volumeBarColor: 'rgba(133, 139, 146, 1)',
+        legendTextColor: 'rgba(255,255,255,0.5)',
+        legendTextHoverColor: '#fff',
+        legendTextHiddenColor: 'rgba(255,255,255,0.5)',
+        metricDropdownBackgroundColor: '#000'
       }
     }
 
@@ -195,11 +221,14 @@
       var galaxyScoreWidget = createIframe('galaxy-score', widgetUrl + '/galaxy?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval);
       var newsWidget = createIframe('news', widgetUrl + '/news?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval);
       var socialWidget = createIframe('social', widgetUrl + '/social?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval);
+      var wordCloudWidget = createIframe('wordCloud', widgetUrl + '/wordcloud?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&animation=false', '100%', '500px');
+      var candleStickWidget = createIframe('candlestick', widgetUrl + '/candlestick?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=galaxy_score&animation=false', '100%', '500px');
       var metricsWidgetGalaxyScore = createIframe('metrics1', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=galaxy_score&price_correlation=' + priceCorrelation);
-      var metricsWidgetAverageSentiment = createIframe('metrics2', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=average_sentiment&price_correlation=' + priceCorrelation);
-      var metricsWidgetPriceScore = createIframe('metrics3', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=price_score&price_correlation=' + priceCorrelation);
-      var metricsWidgetSocialImpactScore = createIframe('metrics4', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=social_impact_score&price_correlation=' + priceCorrelation);
-      var metricsWidgetCorrelationRank = createIframe('metrics5', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=correlation_rank&price_correlation=' + priceCorrelation);
+      var metricsWidgetGalaxyScore2 = createIframe('metrics2', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=galaxy_score&price_correlation=true&animation=false');
+      var metricsWidgetAverageSentiment = createIframe('metrics3', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=average_sentiment&price_correlation=' + priceCorrelation);
+      var metricsWidgetPriceScore = createIframe('metrics4', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=price_score&price_correlation=' + priceCorrelation);
+      var metricsWidgetSocialImpactScore = createIframe('metrics5', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=social_impact_score&price_correlation=' + priceCorrelation);
+      var metricsWidgetCorrelationRank = createIframe('metrics6', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=correlation_rank&price_correlation=' + priceCorrelation);
 
       // var messageButton = document.getElementById('message_button');
       // var results = document.getElementById('results');

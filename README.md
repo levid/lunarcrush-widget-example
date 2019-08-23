@@ -15,6 +15,8 @@ Widgets can be embedded using a standard iframe tag with a src endpoint of: http
 - /news
 - /social
 - /metrics
+- /wordcloud
+- /candlestick
 
 You will need to sign up for a LunarCRUSH free or PRO account and create an API key [here](https://lunarcrush.com/settings/api) to be able to render the widgets. 
 
@@ -129,6 +131,32 @@ var theme = {
     bullishTextColor: '#7ed31f',
     neutralTextColor: 'rgba(133, 139, 146, 1)',
     bearishTextColor: 'rgba(244, 67, 54, 1)',
+  },
+  wordCloudWidget: {
+    width: '100%',
+    height: 400,
+    colors: ['#fafafa', 'rgba(244, 67, 54, 1)', '#7ed31f', '#69d8ee']
+  },
+  candlestickWidget: {
+    yAxisTitleColor: '#fff',
+    yAxisLabelColor: 'rgba(255,255,255,0.5)',
+    xAxisLineColor: '#3c3f42',
+    xAxisTickColor: '#3c3f42',
+    xAxisLabelColor: 'rgba(255,255,255,0.5)',
+    pointLabelColor: '#fff',
+    gridLineColor: '#3c3f42',
+    tooltipBackgroundColor: '#000',
+    tooltipTextColor: 'rgba(255,255,255,0.8)',
+    metricLineColor: '#69d8ee',
+    highPriceBarColor: 'rgba(104,212, 131,0.8)',
+    highPriceLineColor: 'rgba(104,212, 131,0.8)',
+    lowPriceBarColor: 'rgba(243,69,80, 0.8)',
+    lowPriceLineColor: 'rgba(243,69,80, 0.8)',
+    volumeBarColor: 'rgba(133, 139, 146, 1)',
+    legendTextColor: 'rgba(255,255,255,0.5)',
+    legendTextHoverColor: '#fff',
+    legendTextHiddenColor: 'rgba(255,255,255,0.5)',
+    metricDropdownBackgroundColor: '#000'
   }
 }
 
@@ -191,9 +219,28 @@ Coming soon...
   - News articles
   - Tweets
   - Reddit Posts
+* Word Cloud Widget
+* Candlestick Widget
+  - Supported Metrics:
+    - market_cap (Market Cap)
+	  - galaxy_score (Galaxy Score)
+	  - price_score (Price Score)
+	  - average_sentiment (Average Sentiment)
+	  - social_impact_score (Social Impact Score)
+	  - correlation_rank (Correlation Rank)
+	  - volatility (Volatility)
+	  - social_score (Social Volume)
+	  - social_volume (Social Volume)
+	  - twitter_volume (Twitter Volume)
+	  - reddit_volume (Reddit Volume)
+	  - news_volume (News Volume)
+	  - search_volume (Search Volume)
+	  - spam_volume (Spam Volume)
+	  - bullish_sentiment (Bullish Sentiment)
+	  - bearish_sentiment (Bearish Sentiment)
 * Metrics Widget
   - Supported Metrics:
-    - average_sentiment
+    - average_sentiment (Average Sentiment)
     - correlation_rank (Correlation Rank)
     - galaxy_score (Galaxy Score)
     - market_cap (Market Cap)
