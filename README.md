@@ -82,6 +82,9 @@ var theme = {
   },
   poweredByTextColor: '#69d8ee',
   loadingIndicatorColor: 'rgba(133, 139, 146, 1)',
+  tooltipBackgroundColor: '#000',
+  tooltipTextColor: 'rgba(255,255,255,0.8)',
+  infoIconColor: 'rgba(133, 139, 146, 1)',
   metricsWidget: {
     yAxisTitleColor: '#fff',
     yAxisLabelColor: 'rgba(255,255,255,0.5)',

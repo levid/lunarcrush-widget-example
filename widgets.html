@@ -65,8 +65,127 @@
     };
 
     // Serialize theme object to pass in query string
-    function getTheme() {
-      return window.btoa(JSON.stringify(theme));
+    function getTheme(widget) {
+      const theme = {
+        global: {
+          type: 'dark',
+          common: { black: 'rgba(0, 0, 0, 1)', white: 'rgba(255, 255, 255, 1)' },
+          background: { paper: '#202327', default: '#0e1722' },
+          primary: {
+            light: 'rgba(126,211,32, 1)',
+            main: 'rgba(126,211,32, 1)',
+            dark: 'rgba(126,211,32, 1)'
+          },
+          secondary: {
+            light: 'rgba(255,39,0, 1)',
+            main: 'rgba(255,39,0, 1)',
+            dark: 'rgba(255,39,0, 1)'
+          },
+          error: {
+            light: 'rgba(229, 115, 115, 1)',
+            main: 'rgba(244, 67, 54, 1)',
+            dark: 'rgba(211, 47, 47, 1)'
+          },
+          text: {
+            primary: 'rgba(255, 255, 255, 0.87)',
+            secondary: 'rgba(209, 209, 209, 0.54)',
+            disabled: 'rgba(134, 134, 134, 0.38)',
+            hint: 'rgba(0, 0, 0, 0.38)'
+          },
+          typography: {
+            fontFamily: "'Uniform', sans-serif",
+            fontWeight: 300
+          },
+          poweredByTextColor: '#69d8ee',
+          loadingIndicatorColor: 'rgba(133, 139, 146, 1)',
+          tooltipBackgroundColor: '#000',
+          tooltipTextColor: 'rgba(255,255,255,0.8)',
+          infoIconColor: 'rgba(133, 139, 146, 1)',
+        },
+        metricsWidget: {
+          yAxisTitleColor: '#fff',
+          yAxisLabelColor: 'rgba(255,255,255,0.5)',
+          xAxisLineColor: '#3c3f42',
+          xAxisTickColor: '#3c3f42',
+          xAxisLabelColor: 'rgba(255,255,255,0.5)',
+          pointLabelColor: '#fff',
+          gridLineColor: '#3c3f42',
+          tooltipBackgroundColor: '#000',
+          tooltipTextColor: 'rgba(255,255,255,0.8)',
+          priceCorrelationLineColor: '#69d8ee',
+          positiveAreaChartColor: 'rgba(126,211,32, 0.2)',
+          positiveLineColor: 'rgba(126,211,32, 1)',
+          negativeAreaChartColor: 'rgba(255,39,0, 0.2)',
+          negativeLineColor: 'rgba(255,39,0, 1)',
+        },
+        galaxyScoreWidget: {
+          titleColor: '#fff',
+          trackBackgroundColor: 'rgba(255,255,255,0.1)',
+          bullishBarColor: '#7ed31f',
+          neutralBarColor: 'rgba(133, 139, 146, 0.5)',
+          bearishBarColor: 'rgba(244, 67, 54, 1)',
+          bullishTextColor: '#7ed31f',
+          neutralTextColor: 'rgba(133, 139, 146, 1)',
+          bearishTextColor: 'rgba(244, 67, 54, 1)',
+          separatorColor: '#fff',
+          scoreTextColor: '#fff',
+          infoIconColor: 'rgba(133, 139, 146, 1)',
+          tooltipBackgroundColor: '#000',
+          tooltipTextColor: '#fff'
+        },
+        newsWidget: {
+          titleColor: '#fff',
+          articleTitleColor: '#69d8ee',
+          articleDescriptionColor: '#fff',
+          bullishTextColor: '#7ed31f',
+          neutralTextColor: 'rgba(133, 139, 146, 1)',
+          bearishTextColor: 'rgba(244, 67, 54, 1)',
+          dateTextColor: '#ccc',
+          thumbnailBackgroundColor: '#69d8ee',
+          thumbnailIconColor: '#000'
+        },
+        socialWidget: {
+          titleColor: '#fff',
+          postDateColor: '#6f7e82',
+          postTitleColor: '#ccc',
+          bullishTextColor: '#7ed31f',
+          neutralTextColor: 'rgba(133, 139, 146, 1)',
+          bearishTextColor: 'rgba(244, 67, 54, 1)',
+        },
+        wordCloudWidget: {
+          titleColor: '#fff',
+          width: '100%',
+          height: 400,
+          color1: '#fafafa',
+          color2: 'rgba(244, 67, 54, 1)',
+          color3: '#7ed31f',
+          color4: '#69d8ee',
+        },
+        candlestickWidget: {
+          yAxisTitleColor: '#fff',
+          yAxisLabelColor: 'rgba(255,255,255,0.5)',
+          xAxisLineColor: '#3c3f42',
+          xAxisTickColor: '#3c3f42',
+          xAxisLabelColor: 'rgba(255,255,255,0.5)',
+          pointLabelColor: '#fff',
+          gridLineColor: '#3c3f42',
+          metricLineColor: '#69d8ee',
+          highPriceBarColor: 'rgba(104,212, 131,0.8)',
+          highPriceLineColor: 'rgba(104,212, 131,0.8)',
+          lowPriceBarColor: 'rgba(243,69,80, 0.8)',
+          lowPriceLineColor: 'rgba(243,69,80, 0.8)',
+          volumeBarColor: 'rgba(133, 139, 146, 1)',
+          legendTextColor: 'rgba(255,255,255,0.5)',
+          legendTextHoverColor: '#fff',
+          legendTextHiddenColor: 'rgba(255,255,255,0.5)',
+          metricDropdownBackgroundColor: '#000'
+        }
+      }
+      
+      let combined = theme.global;
+      combined[widget] = theme[widget];
+
+      return window.btoa(JSON.stringify(combined));
     }
     
     // Send a message to the child iframe
@@ -94,117 +213,6 @@
       }
     }
 
-
-    // global theme object
-    var theme = {
-      type: 'dark',
-      common: { black: 'rgba(0, 0, 0, 1)', white: 'rgba(255, 255, 255, 1)' },
-      background: { paper: '#202327', default: '#0e1722' },
-      primary: {
-        light: 'rgba(126,211,32, 1)',
-        main: 'rgba(126,211,32, 1)',
-        dark: 'rgba(126,211,32, 1)'
-      },
-      secondary: {
-        light: 'rgba(255,39,0, 1)',
-        main: 'rgba(255,39,0, 1)',
-        dark: 'rgba(255,39,0, 1)'
-      },
-      error: {
-        light: 'rgba(229, 115, 115, 1)',
-        main: 'rgba(244, 67, 54, 1)',
-        dark: 'rgba(211, 47, 47, 1)'
-      },
-      text: {
-        primary: 'rgba(255, 255, 255, 0.87)',
-        secondary: 'rgba(209, 209, 209, 0.54)',
-        disabled: 'rgba(134, 134, 134, 0.38)',
-        hint: 'rgba(0, 0, 0, 0.38)'
-      },
-      typography: {
-        fontFamily: "'Uniform', sans-serif",
-        fontWeight: 300
-      },
-      poweredByTextColor: '#69d8ee',
-      loadingIndicatorColor: 'rgba(133, 139, 146, 1)',
-      metricsWidget: {
-        yAxisTitleColor: '#fff',
-        yAxisLabelColor: 'rgba(255,255,255,0.5)',
-        xAxisLineColor: '#3c3f42',
-        xAxisTickColor: '#3c3f42',
-        xAxisLabelColor: 'rgba(255,255,255,0.5)',
-        pointLabelColor: '#fff',
-        gridLineColor: '#3c3f42',
-        tooltipBackgroundColor: '#000',
-        tooltipTextColor: 'rgba(255,255,255,0.8)',
-        priceCorrelationLineColor: '#69d8ee',
-        positiveAreaChartColor: 'rgba(126,211,32, 0.2)',
-        positiveLineColor: 'rgba(126,211,32, 1)',
-        negativeAreaChartColor: 'rgba(255,39,0, 0.2)',
-        negativeLineColor: 'rgba(255,39,0, 1)',
-      },
-      galaxyScoreWidget: {
-        titleColor: '#fff',
-        trackBackgroundColor: 'rgba(255,255,255,0.1)',
-        bullishBarColor: '#7ed31f',
-        neutralBarColor: 'rgba(133, 139, 146, 0.5)',
-        bearishBarColor: 'rgba(244, 67, 54, 1)',
-        bullishTextColor: '#7ed31f',
-        neutralTextColor: 'rgba(133, 139, 146, 1)',
-        bearishTextColor: 'rgba(244, 67, 54, 1)',
-        separatorColor: '#fff',
-        scoreTextColor: '#fff',
-        infoIconColor: 'rgba(133, 139, 146, 1)',
-        tooltipBackgroundColor: '#000',
-        tooltipTextColor: '#fff'
-      },
-      newsWidget: {
-        titleColor: '#fff',
-        articleTitleColor: '#69d8ee',
-        articleDescriptionColor: '#fff',
-        bullishTextColor: '#7ed31f',
-        neutralTextColor: 'rgba(133, 139, 146, 1)',
-        bearishTextColor: 'rgba(244, 67, 54, 1)',
-        dateTextColor: '#ccc',
-        thumbnailBackgroundColor: '#69d8ee',
-        thumbnailIconColor: '#000'
-      },
-      socialWidget: {
-        titleColor: '#fff',
-        postDateColor: '#6f7e82',
-        postTitleColor: '#ccc',
-        bullishTextColor: '#7ed31f',
-        neutralTextColor: 'rgba(133, 139, 146, 1)',
-        bearishTextColor: 'rgba(244, 67, 54, 1)',
-      },
-      wordCloudWidget: {
-        width: '100%',
-        height: 400,
-        colors: ['#fafafa', 'rgba(244, 67, 54, 1)', '#7ed31f', '#69d8ee']
-      },
-      candlestickWidget: {
-        yAxisTitleColor: '#fff',
-        yAxisLabelColor: 'rgba(255,255,255,0.5)',
-        xAxisLineColor: '#3c3f42',
-        xAxisTickColor: '#3c3f42',
-        xAxisLabelColor: 'rgba(255,255,255,0.5)',
-        pointLabelColor: '#fff',
-        gridLineColor: '#3c3f42',
-        tooltipBackgroundColor: '#000',
-        tooltipTextColor: 'rgba(255,255,255,0.8)',
-        metricLineColor: '#69d8ee',
-        highPriceBarColor: 'rgba(104,212, 131,0.8)',
-        highPriceLineColor: 'rgba(104,212, 131,0.8)',
-        lowPriceBarColor: 'rgba(243,69,80, 0.8)',
-        lowPriceLineColor: 'rgba(243,69,80, 0.8)',
-        volumeBarColor: 'rgba(133, 139, 146, 1)',
-        legendTextColor: 'rgba(255,255,255,0.5)',
-        legendTextHoverColor: '#fff',
-        legendTextHiddenColor: 'rgba(255,255,255,0.5)',
-        metricDropdownBackgroundColor: '#000'
-      }
-    }
-
     var local = false;
 
     window.onload = function () {
@@ -212,23 +220,21 @@
       var interval = getQueryVariable('interval') || '1 Week';
       var priceCorrelation = getQueryVariable('price_correlation') || false;
       var key = getQueryVariable('key');
-      var theme = getTheme();
       var widgetUrl = getWidgetUrl();
       var testPageUrl = getTestPageUrl();
 
       // Create iFrames
-      // var galaxyScoreWidget = createIframe('galaxy-score', 'http://localhost:3000/galaxy?stylesheet=http://localhost:5000/galaxy-score-widget.css&theme=http://localhost:5000/dark-theme.js&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval);
-      var galaxyScoreWidget = createIframe('galaxy-score', widgetUrl + '/galaxy?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&animation=false');
-      var newsWidget = createIframe('news', widgetUrl + '/news?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&animation=false');
-      var socialWidget = createIframe('social', widgetUrl + '/social?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&animation=false');
-      var wordCloudWidget = createIframe('wordCloud', widgetUrl + '/wordcloud?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&animation=false', '100%', '500px');
-      var candleStickWidget = createIframe('candlestick', widgetUrl + '/candlestick?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=galaxy_score&animation=false', '100%', '500px');
-      var metricsWidgetGalaxyScore = createIframe('metrics1', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=galaxy_score&price_correlation=' + priceCorrelation + '&animation=false');
-      var metricsWidgetGalaxyScore2 = createIframe('metrics2', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=galaxy_score&price_correlation=true&animation=false');
-      var metricsWidgetAverageSentiment = createIframe('metrics3', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=average_sentiment&price_correlation=' + priceCorrelation + '&animation=false');
-      var metricsWidgetPriceScore = createIframe('metrics4', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=price_score&price_correlation=' + priceCorrelation + '&animation=false');
-      var metricsWidgetSocialImpactScore = createIframe('metrics5', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=social_impact_score&price_correlation=' + priceCorrelation + '&animation=false');
-      var metricsWidgetCorrelationRank = createIframe('metrics6', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=correlation_rank&price_correlation=' + priceCorrelation + '&animation=false');
+      var galaxyScoreWidget = createIframe('galaxy-score', widgetUrl + '/galaxy?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + getTheme('galaxyScoreWidget') + '&symbol=' + symbol + '&interval=' + interval + '&animation=false');
+      var newsWidget = createIframe('news', widgetUrl + '/news?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + getTheme('newsWidget') + '&symbol=' + symbol + '&interval=' + interval + '&animation=false');
+      var socialWidget = createIframe('social', widgetUrl + '/social?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + getTheme('socialWidget') + '&symbol=' + symbol + '&interval=' + interval + '&animation=false');
+      var wordCloudWidget = createIframe('wordCloud', widgetUrl + '/wordcloud?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + getTheme('wordCloudWidget') + '&symbol=' + symbol + '&interval=' + interval + '&animation=false', '100%', '500px');
+      var candleStickWidget = createIframe('candlestick', widgetUrl + '/candlestick?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + getTheme('candlestickWidget') + '&symbol=' + symbol + '&interval=' + interval + '&metric=galaxy_score&animation=false', '100%', '500px');
+      var metricsWidgetGalaxyScore = createIframe('metrics1', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + getTheme('metricsWidget') + '&symbol=' + symbol + '&interval=' + interval + '&metric=galaxy_score&price_correlation=' + priceCorrelation + '&animation=false');
+      var metricsWidgetGalaxyScore2 = createIframe('metrics2', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + getTheme('metricsWidget') + '&symbol=' + symbol + '&interval=' + interval + '&metric=galaxy_score&price_correlation=true&animation=false');
+      var metricsWidgetAverageSentiment = createIframe('metrics3', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + getTheme('metricsWidget') + '&symbol=' + symbol + '&interval=' + interval + '&metric=average_sentiment&price_correlation=' + priceCorrelation + '&animation=false');
+      var metricsWidgetPriceScore = createIframe('metrics4', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + getTheme('metricsWidget') + '&symbol=' + symbol + '&interval=' + interval + '&metric=price_score&price_correlation=' + priceCorrelation + '&animation=false');
+      var metricsWidgetSocialImpactScore = createIframe('metrics5', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + getTheme('metricsWidget') + '&symbol=' + symbol + '&interval=' + interval + '&metric=social_impact_score&price_correlation=' + priceCorrelation + '&animation=false');
+      var metricsWidgetCorrelationRank = createIframe('metrics6', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + getTheme('metricsWidget') + '&symbol=' + symbol + '&interval=' + interval + '&metric=correlation_rank&price_correlation=' + priceCorrelation + '&animation=false');
 
       // var messageButton = document.getElementById('message_button');
       // var results = document.getElementById('results');
