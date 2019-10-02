@@ -39,6 +39,7 @@ It is possible to configure the widgets using url params appended to the iFrame 
   * ?metric=galaxy_score - Change the timeseries metric being displayed (Metric widget only).
   * ?animation=true|false - Show or hide component animations (default = true)
   * ?theme={See themes section for instructions}
+  * ?scrolling=true|false (default = true) - Enable or disable scrolling on the widget inner content. Use this if you want to set scrolling=false on the iframe with a fixed height but still want to allow scrolling within the widget.
 
 ### Themes
 

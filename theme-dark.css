@@ -6,7 +6,7 @@ html,
 body {
 	margin: 0;
 	padding: 0;
-	overflow: hidden;
+	/* overflow: hidden; */
 	background: #0e1722;
 	color: #fff;
 	font-family: 'Roboto', sans-serif;

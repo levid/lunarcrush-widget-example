@@ -43,7 +43,7 @@
       iframe.setAttribute('frameborder', 0);
       iframe.setAttribute('border', 0);
       iframe.setAttribute('cellspacing', 0);
-      iframe.setAttribute('scrolling', 'no');
+      iframe.setAttribute('scrolling', 'yes');
       iframe.style.width = width || '100%';
       iframe.style.height = height || '300px';
       document.body.appendChild(iframe);
@@ -225,8 +225,8 @@
 
       // Create iFrames
       var galaxyScoreWidget = createIframe('galaxy-score', widgetUrl + '/galaxy?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + getTheme('galaxyScoreWidget') + '&symbol=' + symbol + '&interval=' + interval + '&animation=false');
-      var newsWidget = createIframe('news', widgetUrl + '/news?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + getTheme('newsWidget') + '&symbol=' + symbol + '&interval=' + interval + '&animation=false');
-      var socialWidget = createIframe('social', widgetUrl + '/social?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + getTheme('socialWidget') + '&symbol=' + symbol + '&interval=' + interval + '&animation=false');
+      var newsWidget = createIframe('news', widgetUrl + '/news?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + getTheme('newsWidget') + '&symbol=' + symbol + '&interval=' + interval + '&animation=false&scrolling=false', '100%', '500px');
+      var socialWidget = createIframe('social', widgetUrl + '/social?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + getTheme('socialWidget') + '&symbol=' + symbol + '&interval=' + interval + '&animation=false&scrolling=false', '100%', '500px');
       var wordCloudWidget = createIframe('wordCloud', widgetUrl + '/wordcloud?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + getTheme('wordCloudWidget') + '&symbol=' + symbol + '&interval=' + interval + '&animation=false', '100%', '500px');
       var candleStickWidget = createIframe('candlestick', widgetUrl + '/candlestick?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + getTheme('candlestickWidget') + '&symbol=' + symbol + '&interval=' + interval + '&metric=galaxy_score&animation=false', '100%', '500px');
       var metricsWidgetGalaxyScore = createIframe('metrics1', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + getTheme('metricsWidget') + '&symbol=' + symbol + '&interval=' + interval + '&metric=galaxy_score&price_correlation=' + priceCorrelation + '&animation=false');
