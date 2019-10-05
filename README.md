@@ -47,121 +47,136 @@ Theming is very basic at this point but it is possible to configure primary and 
 
 Dark theme example: https://lunar-widget-test.firebaseapp.com/widgets.html
 
-Light theme example: https://lunar-widget-test.firebaseapp.com/widgets-light.html
+To use our default light or dark theme, simply pass ?theme='light' or ?theme='dark' in the querystring of the embed url (light is the default).
 
 #### Creating a custom theme
 
+It is also possible to pass a custom theme object. Here is an example of our default light theme.
+
 ```
 var theme = {
-  type: 'dark',
-  common: { black: 'rgba(0, 0, 0, 1)', white: 'rgba(255, 255, 255, 1)' },
-  background: { paper: '#202327', default: '#0e1722' },
-  primary: {
-    light: 'rgba(126,211,32, 1)',
-    main: 'rgba(126,211,32, 1)',
-    dark: 'rgba(126,211,32, 1)'
-  },
-  secondary: {
-    light: 'rgba(255,39,0, 1)',
-    main: 'rgba(255,39,0, 1)',
-    dark: 'rgba(255,39,0, 1)'
-  },
-  error: {
-    light: 'rgba(229, 115, 115, 1)',
-    main: 'rgba(244, 67, 54, 1)',
-    dark: 'rgba(211, 47, 47, 1)'
-  },
-  text: {
-    primary: 'rgba(255, 255, 255, 0.87)',
-    secondary: 'rgba(209, 209, 209, 0.54)',
-    disabled: 'rgba(134, 134, 134, 0.38)',
-    hint: 'rgba(0, 0, 0, 0.38)'
-  },
-  typography: {
-    fontFamily: "'Uniform', sans-serif",
-    fontWeight: 300
-  },
-  poweredByTextColor: '#69d8ee',
-  loadingIndicatorColor: 'rgba(133, 139, 146, 1)',
-  tooltipBackgroundColor: '#000',
-  tooltipTextColor: 'rgba(255,255,255,0.8)',
-  infoIconColor: 'rgba(133, 139, 146, 1)',
-  metricsWidget: {
-    yAxisTitleColor: '#fff',
-    yAxisLabelColor: 'rgba(255,255,255,0.5)',
-    xAxisLineColor: '#3c3f42',
-    xAxisTickColor: '#3c3f42',
-    xAxisLabelColor: 'rgba(255,255,255,0.5)',
-    pointLabelColor: '#fff',
-    gridLineColor: '#3c3f42',
-    tooltipBackgroundColor: '#000',
-    tooltipTextColor: 'rgba(255,255,255,0.8)',
-    priceCorrelationLineColor: '#69d8ee',
-    positiveAreaChartColor: 'rgba(126,211,32, 0.2)',
-    positiveLineColor: 'rgba(126,211,32, 1)',
-    negativeAreaChartColor: 'rgba(255,39,0, 0.2)',
-    negativeLineColor: 'rgba(255,39,0, 1)',
-  },
-  galaxyScoreWidget: {
-    titleColor: '#fff',
-    trackBackgroundColor: 'rgba(255,255,255,0.1)',
-    bullishBarColor: '#7ed31f',
-    neutralBarColor: 'rgba(133, 139, 146, 0.5)',
-    bearishBarColor: 'rgba(244, 67, 54, 1)',
-    bullishTextColor: '#7ed31f',
-    neutralTextColor: 'rgba(133, 139, 146, 1)',
-    bearishTextColor: 'rgba(244, 67, 54, 1)',
-    separatorColor: '#fff',
-    scoreTextColor: '#fff',
-    infoIconColor: 'rgba(133, 139, 146, 1)',
-    tooltipBackgroundColor: '#000',
-    tooltipTextColor: '#fff'
-  },
-  newsWidget: {
-    titleColor: '#fff',
-    articleTitleColor: '#69d8ee',
-    articleDescriptionColor: '#fff',
-    bullishTextColor: '#7ed31f',
-    neutralTextColor: 'rgba(133, 139, 146, 1)',
-    bearishTextColor: 'rgba(244, 67, 54, 1)',
-    dateTextColor: '#ccc',
-    thumbnailBackgroundColor: '#69d8ee',
-    thumbnailIconColor: '#000'
-  },
-  socialWidget: {
-    titleColor: '#fff',
-    postDateColor: '#6f7e82',
-    postTitleColor: '#ccc',
-    bullishTextColor: '#7ed31f',
-    neutralTextColor: 'rgba(133, 139, 146, 1)',
-    bearishTextColor: 'rgba(244, 67, 54, 1)',
-  },
-  wordCloudWidget: {
-    width: '100%',
-    height: 400,
-    colors: ['#fafafa', 'rgba(244, 67, 54, 1)', '#7ed31f', '#69d8ee']
-  },
-  candlestickWidget: {
-    yAxisTitleColor: '#fff',
-    yAxisLabelColor: 'rgba(255,255,255,0.5)',
-    xAxisLineColor: '#3c3f42',
-    xAxisTickColor: '#3c3f42',
-    xAxisLabelColor: 'rgba(255,255,255,0.5)',
-    pointLabelColor: '#fff',
-    gridLineColor: '#3c3f42',
-    tooltipBackgroundColor: '#000',
-    tooltipTextColor: 'rgba(255,255,255,0.8)',
-    metricLineColor: '#69d8ee',
-    highPriceBarColor: 'rgba(104,212, 131,0.8)',
-    highPriceLineColor: 'rgba(104,212, 131,0.8)',
-    lowPriceBarColor: 'rgba(243,69,80, 0.8)',
-    lowPriceLineColor: 'rgba(243,69,80, 0.8)',
-    volumeBarColor: 'rgba(133, 139, 146, 1)',
-    legendTextColor: 'rgba(255,255,255,0.5)',
-    legendTextHoverColor: '#fff',
-    legendTextHiddenColor: 'rgba(255,255,255,0.5)',
-    metricDropdownBackgroundColor: '#000'
-  }
+  type: 'light',
+	common: { black: '#000', white: '#fff' },
+	background: { paper: '#fff', default: 'rgba(249, 249, 249, 1)' },
+	primary: {
+		light: 'rgba(69, 157, 255, 1)',
+		main: 'rgba(5, 122, 255, 1)',
+		dark: 'rgba(0, 78, 164, 1)',
+		contrastText: '#fff'
+	},
+	secondary: {
+		light: 'rgba(69, 118, 255, 1)',
+		main: 'rgba(5, 122, 255, 1)',
+		dark: 'rgba(0, 41, 151, 1)',
+		contrastText: '#fff'
+	},
+	dark: {
+		light: '#0066ff',
+		main: '#0044ff',
+		// dark: will be calculated from palette.secondary.main,
+		contrastText: '#ffcc00'
+	},
+	error: {
+		light: 'rgba(229, 115, 115, 1)',
+		main: 'rgba(244, 67, 54, 1)',
+		dark: 'rgba(211, 47, 47, 1)',
+		contrastText: '#fff'
+	},
+	contrastThreshold: 3,
+	text: {
+		primary: 'rgba(0, 0, 0, 0.8)',
+		secondary: 'rgba(0, 0, 0, 0.54)',
+		disabled: 'rgba(0, 0, 0, 0.38)',
+		hint: 'rgba(0, 0, 0, 0.38)'
+	},
+	backgroundColor: 'rgba(249, 249, 249, 1)',
+	poweredByTextColor: '#1a87ff',
+	textLinkColor: '#1a87ff',
+	loadingIndicatorColor: 'rgba(133, 139, 146, 1)',
+	tooltipBackgroundColor: '#000',
+	tooltipTextColor: 'rgba(255,255,255,0.8)',
+	infoIconColor: 'rgba(133, 139, 146, 1)',
+	metricCard: {
+		positiveTextColor: '#3aca60',
+		neutralTextColor: 'rgba(0, 0, 0, 0.54)',
+		negativeTextColor: '#f50057'
+	},
+	metricsWidget: {
+		yAxisTitleColor: '#333333',
+		yAxisLabelColor: '#333333',
+		xAxisLineColor: '#e6e6e6',
+		xAxisTickColor: 'rgb(204, 214, 235)',
+		xAxisLabelColor: 'rgba(255,255,255,0.5)',
+		pointLabelColor: '#fff',
+		gridLineColor: '#e6e6e6',
+		tooltipBackgroundColor: '#fff',
+		tooltipTextColor: '#000',
+		priceCorrelationLineColor: '#1a87ff',
+		positiveAreaChartColor: 'rgba(126,211,32, 0.2)',
+		positiveLineColor: 'rgba(126,211,32, 1)',
+		negativeAreaChartColor: 'rgba(255,39,0, 0.2)',
+		negativeLineColor: 'rgba(255,39,0, 1)'
+	},
+	galaxyScoreWidget: {
+		titleColor: '#000',
+		trackBackgroundColor: '#ececec',
+		bullishBarColor: '#1a87ff',
+		neutralBarColor: 'rgba(133, 139, 146, 0.5)',
+		bearishBarColor: '#F50057',
+		bullishTextColor: '#1a87ff',
+		neutralTextColor: '#000',
+		bearishTextColor: '#F50057',
+		separatorColor: '#fff',
+		scoreTextColor: '#000',
+		infoIconColor: 'rgba(133, 139, 146, 1)',
+		tooltipBackgroundColor: '#000',
+		tooltipTextColor: '#000'
+	},
+	newsWidget: {
+		titleColor: '#000',
+		articleTitleColor: '#69d8ee',
+		articleDescriptionColor: '#000',
+		bullishTextColor: '#7ed31f',
+		neutralTextColor: 'rgba(133, 139, 146, 1)',
+		bearishTextColor: 'rgba(244, 67, 54, 1)',
+		dateTextColor: '#ccc',
+		thumbnailBackgroundColor: '#69d8ee',
+		thumbnailIconColor: '#000'
+	},
+	socialWidget: {
+		titleColor: '#000',
+		postDateColor: '#6f7e82',
+		postTitleColor: '#ccc',
+		bullishTextColor: '#7ed31f',
+		neutralTextColor: 'rgba(133, 139, 146, 1)',
+		bearishTextColor: 'rgba(244, 67, 54, 1)'
+	},
+	wordCloudWidget: {
+		minFontSize: 15,
+		maxFontSize: 60,
+		colors: [ '#000', 'rgba(244, 67, 54, 1)', '#7ed31f', '#aaa' ]
+	},
+	candlestickWidget: {
+		yAxisTitleColor: '#333333',
+		yAxisLabelColor: '#333333',
+		xAxisLineColor: '#e6e6e6',
+		xAxisTickColor: 'rgb(204, 214, 235)',
+		xAxisLabelColor: 'rgba(255,255,255,0.5)',
+		pointLabelColor: '#000',
+		gridLineColor: '#e6e6e6',
+		tooltipBackgroundColor: '#fff',
+		tooltipTextColor: '#000',
+		metricLineColor: '#1a87ff',
+		highPriceBarColor: 'rgba(104,212, 131,0.8)',
+		highPriceLineColor: 'rgba(104,212, 131,0.8)',
+		lowPriceBarColor: 'rgba(243,69,80, 0.8)',
+		lowPriceLineColor: 'rgba(243,69,80, 0.8)',
+		volumeBarColor: 'rgba(133, 139, 146, 1)',
+		legendTextColor: 'rgba(255,255,255,0.5)',
+		legendTextHoverColor: '#000',
+		legendTextHiddenColor: 'rgba(255,255,255,0.5)',
+		metricDropdownBackgroundColor: '#000'
+	}
 }
 
 var serializedTheme = window.btoa(JSON.stringify(theme));
