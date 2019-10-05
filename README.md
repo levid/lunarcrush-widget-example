@@ -48,11 +48,11 @@ Theming is very basic at this point but it is possible to configure primary and 
 Dark theme example: https://lunar-widget-test.firebaseapp.com/widgets.html
 Light theme example: https://lunar-widget-test.firebaseapp.com/widgets-light.html
 
-To use our default light or dark theme, simply pass ?theme='light' or ?theme='dark' in the querystring of the embed url (light is the default).
+To use our default light or dark theme, simply pass "?theme=light" or "?theme=dark" in the querystring of the embed URL (light is the default theme used to render the widgets).
 
 #### Creating a custom theme
 
-It is also possible to pass a custom theme object. Here is an example of our default light theme.
+It is also possible to pass a custom theme object into each widget. Here is an example of our default light theme setup. Simply edit any of the color values to customize the theme to your needs and then serialize the object and append it to the query string of the embed URL (example below).
 
 ```
 var theme = {
@@ -182,7 +182,7 @@ var theme = {
 
 var serializedTheme = window.btoa(JSON.stringify(theme));
 
-// Example of passing the serialized theme as a query param into a widget.
+// Example of passing the serialized custom theme as a query param into a widget.
 <iframe name="Galaxy Score" id="galaxy-score-widget" src=`https://lunarcrush-widgets.firebaseapp.com/galaxy?key=${API_KEY_HERE}&theme=${serializedTheme}` frameborder="0" border="0" cellspacing="0" scrolling="no"></iframe>
 ```
 
