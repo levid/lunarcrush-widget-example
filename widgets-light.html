@@ -64,11 +64,6 @@
       console.log('Query variable %s not found', variable);
     };
 
-    // Serialize theme object to pass in query string
-    function getTheme() {
-      return window.btoa(JSON.stringify(theme));
-    }
-
     // Send a message to the child iframe
     function sendMessage(msg) {
       // Make sure you are sending a string, and to stringify JSON
@@ -95,132 +90,6 @@
     }
 
 
-    // global theme object
-    const theme = {
-      type: 'light',
-      common: { black: '#000', white: '#fff' },
-      background: { paper: '#fff', default: 'rgba(249, 249, 249, 1)' },
-      primary: {
-        light: 'rgba(69, 157, 255, 1)',
-        main: 'rgba(5, 122, 255, 1)',
-        dark: 'rgba(0, 78, 164, 1)',
-        contrastText: '#fff'
-      },
-      secondary: {
-        light: 'rgba(69, 118, 255, 1)',
-        main: 'rgba(5, 122, 255, 1)',
-        dark: 'rgba(0, 41, 151, 1)',
-        contrastText: '#fff'
-      },
-      dark: {
-        light: '#0066ff',
-        main: '#0044ff',
-        // dark: will be calculated from palette.secondary.main,
-        contrastText: '#ffcc00'
-      },
-      error: {
-        light: 'rgba(229, 115, 115, 1)',
-        main: 'rgba(244, 67, 54, 1)',
-        dark: 'rgba(211, 47, 47, 1)',
-        contrastText: '#fff'
-      },
-      contrastThreshold: 3,
-      text: {
-        primary: 'rgba(0, 0, 0, 0.8)',
-        secondary: 'rgba(0, 0, 0, 0.54)',
-        disabled: 'rgba(0, 0, 0, 0.38)',
-        hint: 'rgba(0, 0, 0, 0.38)'
-      },
-      backgroundColor: 'rgba(249, 249, 249, 1)',
-      poweredByTextColor: '#1a87ff',
-      textLinkColor: '#1a87ff',
-      loadingIndicatorColor: 'rgba(133, 139, 146, 1)',
-      tooltipBackgroundColor: '#000',
-      tooltipTextColor: 'rgba(255,255,255,0.8)',
-      infoIconColor: 'rgba(133, 139, 146, 1)',
-      metricCard: {
-        positiveTextColor: '#3aca60',
-        neutralTextColor: 'rgba(0, 0, 0, 0.54)',
-        negativeTextColor: '#f50057'
-      },
-      metricsWidget: {
-        yAxisTitleColor: '#333333',
-        yAxisLabelColor: '#333333',
-        xAxisLineColor: '#e6e6e6',
-        xAxisTickColor: 'rgb(204, 214, 235)',
-        xAxisLabelColor: 'rgba(255,255,255,0.5)',
-        pointLabelColor: '#fff',
-        gridLineColor: '#e6e6e6',
-        tooltipBackgroundColor: '#fff',
-        tooltipTextColor: '#000',
-        priceCorrelationLineColor: '#1a87ff',
-        positiveAreaChartColor: 'rgba(126,211,32, 0.2)',
-        positiveLineColor: 'rgba(126,211,32, 1)',
-        negativeAreaChartColor: 'rgba(255,39,0, 0.2)',
-        negativeLineColor: 'rgba(255,39,0, 1)'
-      },
-      galaxyScoreWidget: {
-        titleColor: '#000',
-        trackBackgroundColor: '#ececec',
-        bullishBarColor: '#1a87ff',
-        neutralBarColor: 'rgba(133, 139, 146, 0.5)',
-        bearishBarColor: '#F50057',
-        bullishTextColor: '#1a87ff',
-        neutralTextColor: '#000',
-        bearishTextColor: '#F50057',
-        separatorColor: '#fff',
-        scoreTextColor: '#000',
-        infoIconColor: 'rgba(133, 139, 146, 1)',
-        tooltipBackgroundColor: '#000',
-        tooltipTextColor: '#000'
-      },
-      newsWidget: {
-        titleColor: '#000',
-        articleTitleColor: '#69d8ee',
-        articleDescriptionColor: '#000',
-        bullishTextColor: '#7ed31f',
-        neutralTextColor: 'rgba(133, 139, 146, 1)',
-        bearishTextColor: 'rgba(244, 67, 54, 1)',
-        dateTextColor: '#ccc',
-        thumbnailBackgroundColor: '#69d8ee',
-        thumbnailIconColor: '#000'
-      },
-      socialWidget: {
-        titleColor: '#000',
-        postDateColor: '#6f7e82',
-        postTitleColor: '#ccc',
-        bullishTextColor: '#7ed31f',
-        neutralTextColor: 'rgba(133, 139, 146, 1)',
-        bearishTextColor: 'rgba(244, 67, 54, 1)'
-      },
-      wordCloudWidget: {
-        minFontSize: 15,
-        maxFontSize: 60,
-        colors: ['#000', 'rgba(244, 67, 54, 1)', '#7ed31f', '#aaa']
-      },
-      candlestickWidget: {
-        yAxisTitleColor: '#333333',
-        yAxisLabelColor: '#333333',
-        xAxisLineColor: '#e6e6e6',
-        xAxisTickColor: 'rgb(204, 214, 235)',
-        xAxisLabelColor: 'rgba(255,255,255,0.5)',
-        pointLabelColor: '#000',
-        gridLineColor: '#e6e6e6',
-        tooltipBackgroundColor: '#fff',
-        tooltipTextColor: '#000',
-        metricLineColor: '#1a87ff',
-        highPriceBarColor: 'rgba(104,212, 131,0.8)',
-        highPriceLineColor: 'rgba(104,212, 131,0.8)',
-        lowPriceBarColor: 'rgba(243,69,80, 0.8)',
-        lowPriceLineColor: 'rgba(243,69,80, 0.8)',
-        volumeBarColor: 'rgba(133, 139, 146, 1)',
-        legendTextColor: 'rgba(255,255,255,0.5)',
-        legendTextHoverColor: '#000',
-        legendTextHiddenColor: 'rgba(255,255,255,0.5)',
-        metricDropdownBackgroundColor: '#000'
-      }
-    };
-    
     var local = false;
 
     window.onload = function () {
@@ -228,23 +97,22 @@
       var interval = getQueryVariable('interval') || '1 Week';
       var priceCorrelation = getQueryVariable('price_correlation') || false;
       var key = getQueryVariable('key');
-      var theme = getTheme();
       var widgetUrl = getWidgetUrl();
       var testPageUrl = getTestPageUrl();
 
       // Create iFrames
       // var galaxyScoreWidget = createIframe('galaxy-score', 'http://localhost:3000/galaxy?stylesheet=http://localhost:5000/galaxy-score-widget.css&theme=http://localhost:5000/dark-theme.js&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval);
-      var galaxyScoreWidget = createIframe('galaxy-score', widgetUrl + '/galaxy?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval);
-      var newsWidget = createIframe('news', widgetUrl + '/news?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval);
-      var socialWidget = createIframe('social', widgetUrl + '/social?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval);
-      var wordCloudWidget = createIframe('wordCloud', widgetUrl + '/wordcloud?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&animation=false', '100%', '500px');
-      var candleStickWidget = createIframe('candlestick', widgetUrl + '/candlestick?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=galaxy_score&animation=false', '100%', '500px');
-      var metricsWidgetGalaxyScore = createIframe('metrics1', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=galaxy_score&price_correlation=' + priceCorrelation);
-      var metricsWidgetGalaxyScore2 = createIframe('metrics2', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=galaxy_score&price_correlation=true&animation=false');
-      var metricsWidgetAverageSentiment = createIframe('metrics3', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=average_sentiment&price_correlation=' + priceCorrelation);
-      var metricsWidgetPriceScore = createIframe('metrics4', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=price_score&price_correlation=' + priceCorrelation);
-      var metricsWidgetSocialImpactScore = createIframe('metrics5', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=social_impact_score&price_correlation=' + priceCorrelation);
-      var metricsWidgetCorrelationRank = createIframe('metrics6', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&theme=' + theme + '&symbol=' + symbol + '&interval=' + interval + '&metric=correlation_rank&price_correlation=' + priceCorrelation);
+      var galaxyScoreWidget = createIframe('galaxy-score', widgetUrl + '/galaxy?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&symbol=' + symbol + '&interval=' + interval);
+      var newsWidget = createIframe('news', widgetUrl + '/news?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&symbol=' + symbol + '&interval=' + interval);
+      var socialWidget = createIframe('social', widgetUrl + '/social?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&symbol=' + symbol + '&interval=' + interval);
+      var wordCloudWidget = createIframe('wordCloud', widgetUrl + '/wordcloud?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&symbol=' + symbol + '&interval=' + interval + '&animation=false', '100%', '500px');
+      var candleStickWidget = createIframe('candlestick', widgetUrl + '/candlestick?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&symbol=' + symbol + '&interval=' + interval + '&metric=galaxy_score&animation=false', '100%', '500px');
+      var metricsWidgetGalaxyScore = createIframe('metrics1', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&symbol=' + symbol + '&interval=' + interval + '&metric=galaxy_score&price_correlation=' + priceCorrelation);
+      var metricsWidgetGalaxyScore2 = createIframe('metrics2', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-dark.css&symbol=' + symbol + '&interval=' + interval + '&metric=galaxy_score&price_correlation=true&animation=false');
+      var metricsWidgetAverageSentiment = createIframe('metrics3', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&symbol=' + symbol + '&interval=' + interval + '&metric=average_sentiment&price_correlation=' + priceCorrelation);
+      var metricsWidgetPriceScore = createIframe('metrics4', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&symbol=' + symbol + '&interval=' + interval + '&metric=price_score&price_correlation=' + priceCorrelation);
+      var metricsWidgetSocialImpactScore = createIframe('metrics5', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&symbol=' + symbol + '&interval=' + interval + '&metric=social_impact_score&price_correlation=' + priceCorrelation);
+      var metricsWidgetCorrelationRank = createIframe('metrics6', widgetUrl + '/metrics?key=' + key + '&stylesheet=' + testPageUrl + '/theme-light.css&symbol=' + symbol + '&interval=' + interval + '&metric=correlation_rank&price_correlation=' + priceCorrelation);
 
       // var messageButton = document.getElementById('message_button');
       // var results = document.getElementById('results');
