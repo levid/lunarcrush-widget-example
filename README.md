@@ -227,9 +227,6 @@ a {
 
 ```
 
-### Communicating Between Widgets
-
-Coming soon...
 
 ### Current Widgets
 

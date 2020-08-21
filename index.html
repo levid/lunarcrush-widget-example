@@ -181,13 +181,13 @@
 
       function getTestPageUrl() {
         if (local === true) {
-          return 'https://localhost:5000'
+          return 'https://localhost:3000'
         } else {
           return 'https://lunar-widget-test.firebaseapp.com'
         }
       }
 
-      var local = false;
+      var local = true;
 
       window.onload = function () {
         var symbol = getQueryVariable('symbol') || 'BTC';
@@ -209,7 +209,6 @@
   </head>
   <body>
     <div id="wrapper">
-      <img src="/coin-page.png" alt="" width="1700" />
       <!-- <iframe width="100%" height="500" src="https://lunarcrush-widgets.firebaseapp.com/galaxy"></iframe> -->
       <!-- <iframe name="galaxy-score-widget" id="galaxy-score" src="https://lunarcrush-widgets.firebaseapp.com/galaxy?stylesheet=https://lunar-widget-test.firebaseapp.com/custom.css" frameborder="0" border="0" cellspacing="0"></iframe> -->
       <iframe name="galaxy-score-widget" id="galaxy-score-widget" frameborder="0" border="0" cellspacing="0" scrolling="no"></iframe>
